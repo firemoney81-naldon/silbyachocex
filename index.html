@@ -1,23 +1,361 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <!-- Schema.org 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InsuranceAgency",
+      "name": "착한실비보험 비교센터",
+      "description": "2026년 최신 4세대 실비보험 상품을 비교 분석하고, 고객 맞춤형 실손의료비 가입 전략을 제공하는 전문 비교 플랫폼입니다.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "대한민국 서울특별시 중구 세종대로 1234",
+        "addressLocality": "서울특별시",
+        "addressRegion": "서울",
+        "postalCode": "10000",
+        "addressCountry": "KR"
+      },
+      "telephone": "1661-XXXX",
+      "url": "https://www.example.com/good-insurance-guide",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "실비보험 상품",
+        "itemListElement": [
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"4세대 실비보험 비교 견적"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"4세대 실비보험 전환 컨설팅"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"노인 실비보험 가입 상담"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"어린이 실비보험 추천"}}
+        ]
+      }
+    }
+    </script>
+
+    <link rel="canonical" href="https://www.example.com/good-insurance-guide">
+
+    <!-- 외부 CSS/JS는 실제 운영 시 분리 및 minify -->
+    <style>
+      :root {
+        --primary-color: #0077c2; /* Deep Blue */
+        --secondary-color: #eaf4ff; /* Light Blue BG */
+        --accent-color: #ffaa00; /* Orange Accent */
+        --text-color: #333;
+        --light-text-color: #666;
+        --bg-color: #ffffff;
+        --section-bg-color: #f7f9fc;
+        --border-color: #e0e0e0;
+      }
+
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; margin: 0; padding: 0; color: var(--text-color); line-height: 1.8; background-color: var(--bg-color); }
+      header { background-color: var(--primary-color); color: white; padding: 30px 15px; text-align: center; }
+      header h1 { margin: 0; font-size: 2.5em; font-weight: bold; }
+      header p { font-size: 1.1em; margin-top: 10px; opacity: 0.9; }
+
+      nav { background-color: var(--secondary-color); padding: 15px; border-bottom: 2px solid var(--border-color); }
+      nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+      nav a { text-decoration: none; color: var(--primary-color); font-weight: bold; font-size: 1.05em; transition: color 0.3s; }
+      nav a:hover { color: var(--accent-color); }
+
+      section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+      section h2 { font-size: 2em; color: var(--primary-color); border-bottom: 3px solid var(--accent-color); padding-bottom: 10px; margin-bottom: 25px; }
+      section h3 { font-size: 1.5em; color: var(--primary-color); margin-top: 30px; }
+
+      /* Visual Hierarchy and Aesthetics */
+      .content-box { background-color: var(--section-bg-color); border-radius: 8px; padding: 30px; margin-bottom: 25px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+      .cta-btn { display: inline-block; background: var(--accent-color); color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-size: 1.1em; font-weight: bold; transition: background 0.3s, transform 0.2s; margin-top: 20px; border: none; cursor: pointer; }
+      .cta-btn:hover { background: #e69100; transform: translateY(-2px); }
+      .list-style-decimal li { margin-bottom: 10px; }
+      .highlight { color: var(--primary-color); font-weight: bold; }
+
+      /* Table Styling */
+      table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+      th, td { border: 1px solid var(--border-color); padding: 12px; text-align: left; }
+      th { background-color: var(--primary-color); color: white; font-weight: bold; }
+      tr:nth-child(even) { background-color: #f0f8ff; }
+      tr:hover { background-color: #e6f7ff; }
+
+      /* Form Styling */
+      .form-container { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin-top: 30px; }
+      .form-container input[type="text"], .form-container input[type="tel"], .form-container select, .form-container textarea { width: calc(100% - 22px); padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; font-size: 1em; }
+      .form-container label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-color); }
+
+      /* Keyword Links */
+      .internal-links { background-color: var(--secondary-color); padding: 25px; border-radius: 8px; margin-top: 30px; }
+      .internal-links h3 { margin-top: 0; color: var(--primary-color); }
+      .internal-links ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; }
+      .internal-links a { text-decoration: none; color: white; background-color: var(--primary-color); padding: 8px 15px; border-radius: 20px; font-size: 0.9em; transition: background-color 0.3s; }
+      .internal-links a:hover { background-color: var(--accent-color); }
+
+      /* Footer Styling */
+      footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9em; }
+      footer a { color: var(--accent-color); text-decoration: none; }
+
+      /* External Link Styling */
+      .external-link { color: #555; font-size: 0.9em; margin-top: 10px; display: block; }
+    </style>
+</head>
+<body>
+
+  <!-- 헤더 및 내비 -->
+  <header>
+    <h1><span class="highlight">착한실비보험</span> 비교 | 2026년 실손의료비 최적화 가이드</h1>
+    <p>2026년 실비보험 개편안 완벽 분석. 4세대 실손의료비의 장점과 숨겨진 단점, 합리적인 전환 전략을 제시합니다.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#intro">실비보험이란?</a></li>
+      <li><a href="#gen-4th">4세대 실비보험</a></li>
+      <li><a href="#compare">세대별 비교 분석</a></li>
+      <li><a href="#quote">무료 견적 신청</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+      <li><a href="#expert">전문가 칼럼</a></li>
+    </ul>
+  </nav>
+
+  <!-- 자동완성 반영 문구 -->
+  <section class="internal-links">
+    <h3>함께 많이 찾는 키워드</h3>
+    <ul>
+      <li><a href="#what-is-4th">4세대 실비보험이란?</a></li>
+      <li><a href="#compare-table">실비보험 세대별 비교표</a></li>
+      <li><a href="#price-change">2026년 실비보험료 인상</a></li>
+      <li><a href="#conversion-guide">실비보험 전환 가이드</a></li>
+      <li><a href="#no-claim-discount">4세대 무사고 할인</a></li>
+      <li><a href="#non-covered">실손보험 비보장 항목</a></li>
+      <li><a href="#senior-insurance">노인 실비보험</a></li>
+    </ul>
+  </section>
+
+  <!-- 핵심 내용 섹션 1: 4세대 실비보험 집중 분석 -->
+  <section id="gen-4th" class="content-box">
+    <h2><span class="highlight">착한실비보험</span>의 정체, 4세대 실손의료비 집중 분석</h2>
+    <h3 id="what-is-4th">4세대 실비보험이란 무엇인가요?</h3>
+    <p>실손의료보험은 가입자가 질병이나 상해로 인해 병원 치료를 받았을 때, 실제로 지출한 의료비를 보장해주는 보험 상품입니다. 흔히 ‘제2의 건강보험’이라고 불릴 만큼 국민 대다수가 가입하고 있는 필수 보험이죠. 2021년 7월에 출시된 4세대 실비보험은 기존 1~3세대 상품과 비교해 구조적인 변화가 있었습니다.</p>
+    <p>4세대 실비보험이 <span class="highlight">‘착한실비보험’</span>으로 불리게 된 주요 이유는 낮은 초기 보험료 때문입니다. 특히 병원을 자주 이용하지 않는 가입자에게는 보험료 할인이 적용되어 부담이 크게 줄었습니다. 하지만 보장 범위와 자기부담금 구조에 변화가 있어 가입자들은 장단점을 명확히 파악해야 합니다.</p>
+
+    <h3 id="price-change">2026년 실비보험료 인상 현황 및 4세대 실손의료비의 특징</h3>
+    <p>2026년 실비보험료는 평균 인상률이 7%대로 예상되지만, 세대별로 인상 폭이 크게 다릅니다. 특히 4세대 실비보험은 2026년 갱신 시점에 <span class="highlight">20%대 인상</span>이 예상되어 가입자들의 혼란이 커지고 있습니다. 4세대 실손의 특징인 '비급여 이용량에 따른 보험료 차등제'가 본격적으로 적용되기 시작했기 때문입니다.</p>
+
+    <p><strong>4세대 실손의료비의 주요 특징 5가지:</strong></p>
+    <ol class="list-style-decimal">
+      <li><strong>보험료 차등제 도입:</strong> 비급여 치료를 많이 받은 가입자는 다음 해 보험료가 최대 300%까지 할증될 수 있습니다. 반면, 보험금을 청구하지 않은 가입자는 <span class="highlight">무사고 할인</span> 혜택을 받을 수 있습니다.</li>
+      <li><strong>높아진 자기부담금:</strong> 급여 항목은 20%, 비급여 항목은 30%의 자기부담금이 적용됩니다. (기존 세대는 자기부담금이 10~20% 수준)</li>
+      <li><strong>비급여 특약 분리:</strong> 도수치료, 비급여 주사제, 자기공명영상(MRI) 등의 비급여 3대 항목이 주계약에서 별도 특약으로 분리되었습니다.</li>
+      <li><strong>5년 재가입 주기:</strong> 기존 15년이었던 재가입 주기가 5년으로 단축되었습니다. 이는 5년마다 보장 내용이 변경된 신규 상품으로 재가입해야 함을 의미합니다.</li>
+      <li><strong>비급여 항목의 한도 축소:</strong> 일부 비급여 항목의 보상 한도가 줄어들었습니다. 특히 도수치료, 비급여 주사제는 연간 보장 횟수나 금액에 제한이 생겼습니다.</li>
+    </ol>
+
+    <h3 id="pros-cons">4세대 실비보험, 장점과 단점 (종합 정리)</h3>
+    <p>4세대 실비보험은 <span class="highlight">착한실비보험</span>이라는 이름처럼 분명한 장점이 있지만, 단점도 명확합니다.</p>
+    <div style="display: flex; gap: 20px;">
+        <div style="flex: 1; border: 1px solid #c0e0c0; background-color: #f0fff0; padding: 15px; border-radius: 5px;">
+            <h4>✅ 4세대 실비보험 장점</h4>
+            <ul>
+                <li><strong>저렴한 보험료:</strong> 초기 보험료가 1~3세대에 비해 저렴합니다.</li>
+                <li><strong>보험료 할인 혜택:</strong> 2년 연속 비급여 보험금 청구가 없는 경우 할인이 적용됩니다.</li>
+                <li><strong>가입 문턱 완화:</strong> 일부 상품은 유병자나 고령자도 가입하기 쉬워졌습니다.</li>
+                <li><strong>보장 항목 확대 (2026 개정):</strong> 임신·출산 관련 급여 의료비가 포함될 예정입니다.</li>
+            </ul>
+        </div>
+        <div style="flex: 1; border: 1px solid #ffc0c0; background-color: #fff0f0; padding: 15px; border-radius: 5px;">
+            <h4>❌ 4세대 실비보험 단점</h4>
+            <ul>
+                <li><strong>높은 자기부담금:</strong> 급여 20%, 비급여 30%로 기존 세대 대비 부담이 큽니다.</li>
+                <li><strong>보험료 할증 리스크:</strong> 비급여 치료를 많이 받으면 다음 해 보험료가 크게 오릅니다.</li>
+                <li><strong>5년 재가입 주기:</strong> 보장 내용이 5년마다 변경될 수 있어 장기적인 안정성이 부족합니다.</li>
+                <li><strong>보상 한도 축소:</strong> 일부 고가 비급여 치료의 보장 한도가 줄어들었습니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <p style="margin-top: 20px;"><strong>[주의사항]</strong> 4세대 실비보험은 병원을 자주 이용하는 사람에게는 오히려 독이 될 수 있습니다. 특히 비급여 치료가 많은 만성 질환자나 고령층은 신중한 비교가 필요합니다.</p>
+  </section>
+
+  <!-- 핵심 내용 섹션 2: 세대별 비교 분석 및 전환 가이드 -->
+  <section id="compare" class="content-box">
+    <h2><span class="highlight">세대별 실손보험 비교</span>: 1세대부터 4세대까지 핵심 정리</h2>
+    <p>실손보험은 가입 시기에 따라 보장 내용이 크게 다릅니다. 특히 1세대 실비보험 가입자들은 높은 보험료 갱신률 때문에 4세대 <span class="highlight">착한실비보험</span>으로의 전환을 고민하는 경우가 많습니다. 각 세대별 특징을 정확히 비교하여 자신에게 맞는 최적의 선택을 하세요.</p>
+
+    <h3 id="compare-table">실비보험 세대별 비교표 (2026년 기준)</h3>
+    <table border="1" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>1세대 실손 (2009. 9월 이전)</th>
+          <th>2세대 실손 (2009. 10월 ~ 2017. 3월)</th>
+          <th>3세대 실손 (2017. 4월 ~ 2021. 6월)</th>
+          <th>4세대 실손 (2021. 7월 이후)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>핵심 특징</strong></td>
+          <td>자기부담금 거의 없음 (100% 보장)</td>
+          <td>자기부담금 일부 적용 (10~20%)</td>
+          <td>자기부담금 증가 및 비급여 3종 분리</td>
+          <td><span class="highlight">보험료 차등제 적용</span></td>
+        </tr>
+        <tr>
+          <td><strong>자기부담금 (입원)</strong></td>
+          <td>없음 (100% 보장)</td>
+          <td>90% 보장 (표준형)</td>
+          <td>90% 보장 (표준형)</td>
+          <td>급여 20%, 비급여 30%</td>
+        </tr>
+        <tr>
+          <td><strong>자기부담금 (통원)</strong></td>
+          <td>최소 5천원 공제</td>
+          <td>병원 규모별 1~2만원 공제</td>
+          <td>병원 규모별 1~2만원 공제</td>
+          <td>급여 20%, 비급여 30% (최저 1~3만원)</td>
+        </tr>
+        <tr>
+          <td><strong>비급여 특약</strong></td>
+          <td>비급여 항목 포함 (분리 안됨)</td>
+          <td>비급여 항목 포함 (분리 안됨)</td>
+          <td>비급여 3대 항목 분리 (특약화)</td>
+          <td><span class="highlight">모든 비급여 특약 분리</span></td>
+        </tr>
+        <tr>
+          <td><strong>보험료 갱신 주기</strong></td>
+          <td>3년/5년 갱신</td>
+          <td>1년 갱신 (15년 재가입)</td>
+          <td>1년 갱신 (15년 재가입)</td>
+          <td><span class="highlight">1년 갱신 (5년 재가입)</span></td>
+        </tr>
+        <tr>
+          <td><strong>보험료 변동</strong></td>
+          <td>할인/할증 제도 없음</td>
+          <td>할인/할증 제도 없음</td>
+          <td>할인/할증 제도 없음</td>
+          <td><span class="highlight">비급여 이용량에 따라 차등 적용</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="conversion-guide">실비보험 전환, 현명한 선택을 위한 가이드</h3>
+    <p>4세대 실비보험으로 전환해야 할지 말아야 할지 고민하는 분들을 위해 현명한 전환 기준을 제시합니다. 특히 <span class="highlight">1세대 실비보험</span> 가입자라면 높은 보험료로 인해 전환을 고려하는 것이 일반적입니다.</p>
+    <div style="display: flex; gap: 20px;">
+        <div style="flex: 1; border: 1px solid #c0e0c0; background-color: #f0fff0; padding: 15px; border-radius: 5px;">
+            <h4>✅ 4세대 전환을 추천하는 경우</h4>
+            <ul>
+                <li><strong>병원을 거의 이용하지 않는 분:</strong> 비급여 치료를 받지 않으면 <span class="highlight">무사고 할인</span>을 받을 수 있어 보험료 부담이 현저히 줄어듭니다.</li>
+                <li><strong>기존 보험료가 과도하게 높은 분:</strong> 1세대 실비보험의 높은 갱신 보험료가 부담될 경우, 4세대로 전환하여 당장의 지출을 줄일 수 있습니다.</li>
+                <li><strong>가성비를 중시하는 젊은 층:</strong> 저렴한 보험료로 최소한의 의료비를 대비하고자 하는 경우.</li>
+            </ul>
+        </div>
+        <div style="flex: 1; border: 1px solid #ffc0c0; background-color: #fff0f0; padding: 15px; border-radius: 5px;">
+            <h4>❌ 4세대 전환을 신중히 고려해야 하는 경우</h4>
+            <ul>
+                <li><strong>비급여 치료를 정기적으로 받는 분:</strong> 도수치료, 주사제 등 비급여 치료를 꾸준히 받는다면 보험료가 할증될 위험이 높습니다.</li>
+                <li><strong>만성 질환을 앓고 있는 분:</strong> 4세대 실비보험은 유병자에게 불리한 자기부담금 구조를 가질 수 있습니다.</li>
+                <li><strong>1세대 실비보험을 유지하고 있는 분 중 병원비 지출이 잦은 경우:</strong> 보장성이 뛰어난 1세대를 섣불리 해지하면 손해를 볼 수 있습니다.</li>
+            </ul>
+        </div>
+    </div>
+    <p style="margin-top: 20px;"><strong>[전문가 조언]</strong> 실비보험 전환은 기존 보험 해지 후 신규 가입하는 방식이므로, 전환 전 반드시 전문가의 정확한 분석을 받아야 합니다. 특히 병력을 숨기고 가입하면 추후 보험금 지급에 문제가 생길 수 있습니다.</p>
+  </section>
+
+  <!-- 핵심 내용 섹션 3: 2026년 실비보험 개편 및 심화 정보 -->
+  <section id="policy-change" class="content-box">
+    <h2>2026년 실비보험 개편 전망 및 주요 보장 항목 심화 분석</h2>
+    <h3 id="2026-update">2026년 실비보험 주요 개편 내용 (예상)</h3>
+    <p>금융당국은 2026년 5세대 실손보험 도입을 추진하고 있으며, 기존 1~4세대 가입자들의 전환에 대한 논의도 활발하게 이루어지고 있습니다. 2026년 개편안의 핵심은 비급여 항목의 관리 강화와 보장 합리화입니다. 특히 임신·출산 관련 급여 의료비가 보장 항목에 포함될 예정이며, 이는 저출생 시대의 사회적 요구를 반영한 결과입니다.</p>
+
+    <h3 id="non-covered">실손보험에서 보장되지 않는 비보장 항목 (2026년 기준)</h3>
+    <p>실손보험은 모든 의료비를 보장하지 않습니다. 특히 2026년 기준 실손보험에서 보장되지 않는 주요 항목을 미리 확인하여 불필요한 지출을 막으세요.</p>
+    <ul>
+      <li><strong>미용 목적의 치료:</strong> 단순 성형수술, 미용 주사제 (보톡스, 필러 등), 비만 치료 목적의 위소매절제술이나 삭센다 처방.</li>
+      <li><strong>건강 증진 목적:</strong> 영양제 투여, 종합 건강검진 비용, 예방접종.</li>
+      <li><strong>해외 의료비:</strong> 해외에서 발생한 의료비는 원칙적으로 보장되지 않습니다. (다만, 3개월 이상 해외 체류 시 실비보험료 환급 제도가 있습니다.)</li>
+      <li><strong>치과 및 한방 진료:</strong> 급여 항목에 한해 보장하며, 비급여 항목은 보장되지 않습니다.</li>
+      <li><strong>간병비, 의약외품 구입비:</strong> 간병인 사용 비용이나 일반 보습제 구입비 등은 보장에서 제외됩니다.</li>
+    </ul>
+
+    <h3 id="claim-tip">실비보험금 청구 시 유의사항 (금융감독원 권고)</h3>
+    <p>보험금 청구 시 자주 발생하는 분쟁 사례를 통해 불이익을 예방하세요.</p>
+    <div style="background-color: #f0f8ff; padding: 20px; border-radius: 5px; border-left: 5px solid var(--primary-color);">
+        <h4>분쟁 사례 1: 입원 치료의 인정 여부</h4>
+        <p>신경성형술과 같은 비급여 시술을 받은 후, 합병증 없이 경과 관찰만 위해 입원한 경우 보험사는 이를 실질적인 입원 치료로 인정하지 않고 통원 한도(30만 원)만 지급할 수 있습니다. 입원 필요성을 의료기관이 명확하게 증명해야 합니다.</p>
+        <h4>분쟁 사례 2: 비만 치료 목적의 약제 처방</h4>
+        <p>비만 치료 목적의 약제는 원칙적으로 실손보험 보장 대상이 아닙니다. 다만 당뇨병이나 고혈압 등 비만과 관련된 합병증 치료 목적으로 처방된 경우에 한해 건강보험 급여가 적용되며, 이 본인부담금은 실손보험에서 보상받을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- 사용자 참여 섹션: 비교견적 신청 및 체류시간 증대 -->
+  <section id="quote">
+    <h2><span class="highlight">착한실비보험</span> 맞춤 견적 신청</h2>
+    <p>내게 가장 적합한 실비보험 상품을 찾고 계신가요? 100세 시대, 실비보험은 가입 시점의 보험료뿐만 아니라 갱신 시점의 인상률, 자기부담금 구조 등 장기적인 관점에서 접근해야 합니다. 현재 가입하고 있는 실비보험이 4세대로 전환했을 때 유리할지, 아니면 기존 보험을 유지하는 것이 좋을지 꼼꼼하게 비교 분석해 드립니다.</p>
+
+    <div class="form-container">
+        <h3>1:1 맞춤형 무료 비교견적 요청 (AI 분석 기반)</h3>
+        <p style="font-size: 0.9em; color: var(--light-text-color);">정보 입력 시 2026년 실비보험료 인상률 및 가이드라인에 따른 최적의 상품을 제안해 드립니다. 개인정보는 상담 목적으로만 사용되며 안전하게 보호됩니다.</p>
+        <form action="/submit-quote-request" method="post">
+            <p><label for="name">이름 (필수)</label><br><input type="text" id="name" name="name" required placeholder="예: 홍길동"></p>
+            <p><label for="phone">연락처 (필수)</label><br><input type="tel" id="phone" name="phone" required placeholder="예: 010-1234-5678"></p>
+            <p><label for="email">이메일 (선택)</label><br><input type="email" id="email" name="email" placeholder="예: user@example.com"></p>
+            <p><label for="birth">생년월일 (필수)</label><br><input type="text" id="birth" name="birth" required placeholder="예: 19801010 (8자리)"></p>
+            <p><label for="current_policy">현재 실비보험 가입 여부 및 세대 (필수)</label><br>
+                <select id="current_policy" name="current_policy" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="none">가입 경험 없음</option>
+                    <option value="gen1">1세대 (2009년 9월 이전)</option>
+                    <option value="gen2">2세대 (2009년 10월 ~ 2017년 3월)</option>
+                    <option value="gen3">3세대 (2017년 4월 ~ 2021년 6월)</option>
+                    <option value="gen4">4세대 (2021년 7월 이후)</option>
+                    <option value="unknown">가입했으나 세대 모름</option>
+                </select>
+            </p>
+            <p><label for="details">상담 희망 내용 (구체적으로 작성 시 정확한 견적 제공)</label><br><textarea id="details" name="details" rows="5" placeholder="예: 현재 1세대 가입자이며, 비급여 치료를 자주 받아 갱신 보험료가 부담됩니다. 4세대로 전환할 경우 장단점 비교를 부탁드립니다."></textarea></p>
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+        </form>
+    </div>
+  </section>
+
+  <!-- FAQ 섹션 -->
+  <section id="faq" class="content-box">
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <div class="faq-item">
+      <h3>Q1: 4세대 실비보험, 정말 착한실비보험인가요?</h3>
+      <p>A: 4세대 실비보험은 보험료가 저렴하다는 장점이 있어 <span class="highlight">착한실비보험</span>으로 불립니다. 그러나 이는 병원을 자주 이용하지 않는 가입자에게 한정된 장점일 수 있습니다. 병원 이용이 잦으면 오히려 보험료가 크게 할증될 수 있으므로, 자신의 의료 이용 패턴을 정확히 분석해야 합니다.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Q2: 실비보험 전환 시 기존 보험의 해지 환급금은 어떻게 되나요?</h3>
+      <p>A: 실비보험은 기본적으로 갱신형 상품이며, 저축성 보험이 아니기 때문에 해지 환급금이 거의 없거나 미미합니다. 특히 4세대 실비보험은 <span class="highlight">무해지환급형</span> 상품이 많아 중간에 해지 시 해지 환급금이 0원일 수 있습니다. 따라서 전환 전 해지 환급금 여부를 반드시 확인해야 합니다.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Q3: 4세대 실비보험의 '비급여 이용량에 따른 보험료 차등제'는 무엇인가요?</h3>
+      <p>A: 비급여 진료비를 연간 100만 원 이상 청구하면 보험료가 할증되는 제도입니다. 2026년에는 이 차등제가 본격적으로 적용되어, 비급여 청구 금액에 따라 다음 해 보험료가 최대 300%까지 오를 수 있습니다. 반면 청구 이력이 없으면 할인이 적용됩니다.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Q4: 2026년 5세대 실비보험이 도입되면 기존 가입자도 강제 전환되나요?</h3>
+      <p>A: 아닙니다. 금융당국은 기존 가입자에게 강제 전환을 적용하지 않는다고 밝혔습니다. 다만 2세대 실비보험 가입자 중 15년 재가입 주기가 도래하는 경우, 5년 재가입 주기와 보장 내용이 변경된 4세대(또는 5세대) 상품으로 재가입해야 할 수 있습니다. 1세대 가입자는 약관 변경 없이 만기까지 유지가 가능합니다.</p>
+    </div>
+  </section>
+
+  <!-- 심층 분석 및 외부 신뢰성 확보 섹션 -->
+  <section id="expert" class="content-box">
+    <h2><span class="highlight">전문가 칼럼</span>: 실손의료비, 2026년 재설계의 필요성</h2>
+    <p>2026년은 실손보험 가입자에게 중요한 전환점이 될 것입니다. 4세대 실비보험의 갱신 시점 도래와 더불어 금융당국의 5세대 개편 논의가 맞물려 있기 때문입니다. 특히 과거 1~2세대 가입자들은 무해지환급형 전환을 통해 보험료 부담을 줄이는 동시에 보장 내용의 합리성을 확보해야 합니다.</p>
+    <p>최근 금융감독원 발표에 따르면, 실손보험의 비급여 보장 기준이 더욱 명확해지고 있습니다. 이는 일부 의료기관의 과잉 진료를 막고 선량한 가입자의 보험료 인상 부담을 줄이기 위한 조치입니다. 가입자는 사전에 <a href="https://www.fss.or.kr/" target="_blank">금융감독원 (FSS)</a>의 실손보험 가이드라인을 확인하고, 병원 치료 시에도 실손보험 보장 여부를 꼼꼼히 체크해야 합니다.</p>
+
+    <h3 id="external-reference">외부 참고 자료 및 신뢰성 확보</h3>
+    <p>착한실비보험 비교센터는 공신력 있는 기관의 정보를 바탕으로 정확한 분석을 제공합니다. (2026년 기준)</p>
+    <ul>
+      <li><a href="https://www.fss.or.kr/fss/main/index.jsp" target="_blank">금융감독원 (FSS)</a>: 실손의료보험 제도 개편 및 소비자 유의사항 (보도자료).</li>
+      <li><a href="https://www.health.go.kr/main/index.jsp" target="_blank">보건복지부</a>: 건강보험 보장성 강화 정책 및 급여 항목 정보 제공.</li>
+      <li><a href="https://www.k-health.or.kr/" target="_blank">한국보건산업진흥원</a>: 의료 기술 및 건강보험 심사평가 정보.</li>
+      <li><a href="https://namu.wiki/w/%EC%8B%A4%EC%86%90%EC%9D%98%EB%A3%8C%EB%B3%B4%ED%97%98" target="_blank">나무위키</a>: 실손의료보험의 세대별 변화 및 역사적 맥락.</li>
+      <li><a href="https://www.kidi.or.kr/main.do" target="_blank">보험연구원</a>: 실손보험 손해율 분석 및 통계 자료.</li>
+    </ul>
+
+    <p style="text-align: right; font-size: 0.8em; color: var(--light-text-color); margin-top: 20px;">*본 정보는 2026년 기준 금융당국 발표 및 보험업계 동향을 바탕으로 작성되었으며, 실제 상품 내용과는 차이가 있을 수 있습니다. 최종 가입 전 반드시 약관을 확인하시기 바랍니다.</p>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <p>&copy; 2026 착한실비보험 비교센터. 모든 콘텐츠는 정보 제공 목적으로만 활용됩니다. <br>주소: 서울특별시 중구 세종대로 1234. 고객센터: 1661-XXXX</p>
+    <p>자세한 개인정보 처리 방침 및 이용약관은 홈페이지를 참조하시기 바랍니다.</p>
+  </footer>
+
+  
